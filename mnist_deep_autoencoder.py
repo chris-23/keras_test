@@ -50,7 +50,7 @@ deep_autoencoder_model = tf.keras.Model(inputs=inputs, outputs=deep_autoencoder_
 train_steps = 60000 // BATCH_SIZE
 
 deep_autoencoder_model.compile(optimizer=tf.keras.optimizers.Adam(), loss='binary_crossentropy')
-deep_auto_history = deep_autoencoder_model.fit(train_dataset, steps_per_epoch=train_steps, epochs=50)
+deep_auto_history = deep_autoencoder_model.fit(train_dataset, steps_per_epoch=train_steps, epochs=10)
 
 def display_one_row(disp_images, offset, shape=(28, 28)):
   '''Display sample outputs in one row.'''
@@ -68,6 +68,7 @@ def display_results(disp_input_images, disp_encoded, disp_predicted, enc_shape=(
   display_one_row(disp_input_images, 0, shape=(28,28,))
   display_one_row(disp_encoded, 10, shape=enc_shape)
   display_one_row(disp_predicted, 20, shape=(28,28,))
+  plt.show()
 
 # take 1 batch of the dataset
 test_dataset = test_dataset.take(1)
